@@ -1,0 +1,17 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/vicky/jarfiles/javax.servlet-api-4.0.1.jar",
+        "/home/vicky/jarfiles/json-simple-1.1.jar",
+        "/home/vicky/jarfiles/mysql-connector-java-8.0.30.jar",
+        "/home/vicky/jarfiles/websocket-api.jar",
+        "/home/vicky/Downloads/mickey/AdventNet/MickeyLite/lib/tomcat/servlet-api.jar",
+        "WEB-INF/lib/json-simple-1.1.jar",
+        "/home/vicky/Downloads/mickey/AdventNet/MickeyLite/lib/AdvPersistence.jar",
+        "/home/vicky/Downloads/mickey/AdventNet/MickeyLite/lib/AdvMicroFramework.jar",
+        "/home/vigneshwaran/AdventNetMickeyLite/AdventNet/MickeyLite/lib/AdvMicroFramework.jar",
+        "/home/vigneshwaran/AdventNetMickeyLite/AdventNet/MickeyLite/lib/AdvPersistence.jar",
+        "/home/vigneshwaran/AdventNetMickeyLite/AdventNet/MickeyLite/lib/json-simple-1.1.jar",
+        "/home/vigneshwaran/AdventNetMickeyLite/AdventNet/MickeyLite/lib/tomcat/servlet-api.jar"
+    ]
+}
