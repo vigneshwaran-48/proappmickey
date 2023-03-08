@@ -10,7 +10,7 @@
 
         <servlet>
             <servlet-name>RetrieveData</servlet-name>
-            <servlet-class>com.servlets.RetrieveUserData</servlet-class>
+            <servlet-class>com.servlets.users.RetrieveUserData</servlet-class>
         </servlet>
 
         <servlet-mapping>
@@ -20,7 +20,7 @@
 
         <servlet>
             <servlet-name>RetrieveProjects</servlet-name>
-            <servlet-class>com.servlets.RetrieveProjects</servlet-class>
+            <servlet-class>com.servlets.projects.RetrieveProjects</servlet-class>
         </servlet>
 
         <servlet-mapping>
@@ -30,7 +30,7 @@
 
         <servlet>
             <servlet-name>AddProject</servlet-name>
-            <servlet-class>com.servlets.AddProject</servlet-class>
+            <servlet-class>com.servlets.projects.AddProject</servlet-class>
         </servlet>
 
         <servlet-mapping>
@@ -40,7 +40,7 @@
 
         <servlet>
             <servlet-name>DeleteProject</servlet-name>
-            <servlet-class>com.servlets.DeleteProject</servlet-class>
+            <servlet-class>com.servlets.projects.DeleteProject</servlet-class>
         </servlet>
 
         <servlet-mapping>
@@ -49,8 +49,18 @@
         </servlet-mapping>
 
         <servlet>
+            <servlet-name>UpdateProject</servlet-name>
+            <servlet-class>com.servlets.projects.UpdateProject</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>UpdateProject</servlet-name>
+            <url-pattern>/project/update</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
             <servlet-name>AddTask</servlet-name>
-            <servlet-class>com.servlets.AddTask</servlet-class>
+            <servlet-class>com.servlets.tasks.AddTask</servlet-class>
         </servlet>
 
         <servlet-mapping>
@@ -60,7 +70,7 @@
 
         <servlet>
             <servlet-name>DeleteTask</servlet-name>
-            <servlet-class>com.servlets.DeleteTask</servlet-class>
+            <servlet-class>com.servlets.tasks.DeleteTask</servlet-class>
         </servlet>
 
         <servlet-mapping>
@@ -70,11 +80,21 @@
 
         <servlet>
             <servlet-name>RetrieveTasks</servlet-name>
-            <servlet-class>com.servlets.RetrieveTasks</servlet-class>
+            <servlet-class>com.servlets.tasks.RetrieveTasks</servlet-class>
         </servlet>
 
         <servlet-mapping>
             <servlet-name>RetrieveTasks</servlet-name>
             <url-pattern>/task/getall</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>UpdateTask</servlet-name>
+            <servlet-class>com.servlets.tasks.UpdateTask</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>UpdateTask</servlet-name>
+            <url-pattern>/task/update</url-pattern>
         </servlet-mapping>
     </web-app>

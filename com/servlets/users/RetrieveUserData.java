@@ -1,4 +1,4 @@
-package com.servlets;
+package com.servlets.users;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

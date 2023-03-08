@@ -4,6 +4,7 @@ import java.util.Iterator;
 import org.json.simple.*;
 import com.adventnet.ds.query.*;
 import com.adventnet.ds.query.InsertQueryImpl.Condition;
+import com.adventnet.mfw.bean.BeanUtil;
 import com.adventnet.persistence.*;
 import com.databases.tableobjects.*;
 
@@ -103,4 +104,38 @@ public class TaskOperation {
         }
         return array;
     }
+    public boolean updateTask(JSONObject taskDetails){
+        try {
+            Persistence pers = (Persistence) BeanUtil.lookup("Persistence");
+
+            UpdateQuery query = new UpdateQueryImpl(Task.TABLE);
+            query.setUpdateColumn(Task.TASKNAME, taskDetails.get("taskName"));
+            query.setUpdateColumn(Task.DESCRIPTION, taskDetails.get("taskDesc"));
+            query.setUpdateColumn(Task.FROM, taskDetails.get("fromDate"));
+            query.setUpdateColumn(Task.TO, taskDetails.get("toDate"));
+            
+            Criteria c = new Criteria(Column.getColumn(Task.TABLE, Task.TASKID), taskDetails.get("taskId"), QueryConstants.EQUAL);
+            query.setCriteria(c);          
+            pers.update(query);
+            return true;
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // public boolean updateTaskUsers(JSONObject taskDetails){
+
+    //     try {
+    //         Persistence pers = (Persistence) BeanUtil.lookup("Persistence");
+    //         Criteria c = new Criteria(Column.getColumn(Task.TABLE, Task.TASKID), taskDetails.get("taskId"), QueryConstants.EQUAL);
+    //         DataObject task = pers.get(Task.TABLE, c);
+
+    //     } 
+    //     catch (Exception e) {
+    //         e.printStackTrace();
+    //     }
+        
+    // }
 }

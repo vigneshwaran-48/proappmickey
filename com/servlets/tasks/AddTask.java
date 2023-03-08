@@ -1,4 +1,4 @@
-package com.servlets;
+package com.servlets.tasks;
 
 import java.io.IOError;
 import java.io.IOException;

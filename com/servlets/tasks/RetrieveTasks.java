@@ -1,4 +1,4 @@
-package com.servlets;
+package com.servlets.tasks;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,8 +30,9 @@ public class RetrieveTasks extends HttpServlet {
         // new Criteria(new Column(Project.TABLE, Project.CREATEDBY), 1502, QueryConstants.EQUAL), Project.PROJECTID, Project.PROJECTNAME);
         
         List<String> tablesList = new ArrayList<>();
-        tablesList.add(User.TABLE);
         tablesList.add(Project.TABLE);
+        tablesList.add(User.TABLE);
+        
         try {
             Criteria c = new Criteria(new Column(User.TABLE, User.USERID), new Column(Project.TABLE, Project.PROJECTID), QueryConstants.EQUAL);
             SelectQuery query = QueryConstructor.get(tablesList, new boolean[]{true, false}, c);
@@ -46,7 +47,8 @@ public class RetrieveTasks extends HttpServlet {
         Persistence per;
         try {
             per = (Persistence)BeanUtil.lookup("Persistence");
-            DataObject d=per.getForPersonality("UserPers",c);  
+            SelectQuery query = QueryConstructor.getForPersonality("UserPers",c);  
+            DataObject d= per.get(query);
             System.out.println(d);  
         } 
         catch (Exception e) {

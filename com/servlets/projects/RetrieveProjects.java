@@ -1,4 +1,4 @@
-package com.servlets;
+package com.servlets.projects;
 
 import java.io.IOException;
 import java.sql.Connection;

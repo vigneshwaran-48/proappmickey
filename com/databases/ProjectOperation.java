@@ -4,6 +4,7 @@ import java.util.Iterator;
 import org.json.simple.*;
 import com.adventnet.ds.query.*;
 import com.adventnet.ds.query.InsertQueryImpl.Condition;
+import com.adventnet.mfw.bean.BeanUtil;
 import com.adventnet.persistence.*;
 import com.databases.tableobjects.Project;
 import com.databases.tableobjects.ProjectRelation;
@@ -91,11 +92,12 @@ public class ProjectOperation {
 
     public boolean deleteProject(int pid){
         try{
-            DataObject dataObject = DataAccess.get(Project.TABLE, (Criteria) null);
-            Row r = new Row(Project.TABLE);
-            r.set(Project.PROJECTID, pid);
-            dataObject.deleteRow(r);
-            DataAccess.update(dataObject);
+            Persistence pers = (Persistence) BeanUtil.lookup("Persistence");
+            
+            DeleteQuery delete = new DeleteQueryImpl(Project.TABLE);
+            Criteria c = new Criteria(Column.getColumn(Project.TABLE, Project.PROJECTID), pid, QueryConstants.EQUAL);
+            delete.setCriteria(c);
+            pers.delete(delete);
 
             return true;
         }
@@ -105,4 +107,37 @@ public class ProjectOperation {
         return false;
     }
 
+    public boolean updateProject(JSONObject updateProjectDetails){
+
+        try {
+            Persistence pers = (Persistence) BeanUtil.lookup("Persistence");
+
+            UpdateQuery query = new UpdateQueryImpl(Project.TABLE);
+            query.setUpdateColumn(Project.PROJECTNAME, updateProjectDetails.get("projectName"));
+            query.setUpdateColumn(Project.DESCRIPTION, updateProjectDetails.get("projectDesc"));
+            query.setUpdateColumn(Project.FROM, updateProjectDetails.get("fromDate"));
+            query.setUpdateColumn(Project.TO, updateProjectDetails.get("toDate"));
+            
+            Criteria c = new Criteria(Column.getColumn(Project.TABLE, Project.PROJECTID), updateProjectDetails.get("projectId"), QueryConstants.EQUAL);
+            query.setCriteria(c);          
+            pers.update(query);
+            return true;
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private void updateUsers(JSONArray users, int projectId){
+
+        try {
+            Persistence pers = (Persistence) BeanUtil.lookup("Persistence");
+            
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
 }
